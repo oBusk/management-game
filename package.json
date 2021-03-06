@@ -12,7 +12,7 @@
         "test": "react-scripts test",
         "lint": "eslint **/*.{ts,tsx,js,jsx} --ignore-path .gitignore",
         "postlint": "npm run prettier",
-        "lint-fix": "eslint **/*.{tsx?,jsx?} --ignore-path .gitignore --fix",
+        "lint-fix": "eslint **/*.{ts,tsx,js,jsx} --ignore-path .gitignore --fix",
         "prettier": "prettier **/*.{md,yml,yaml,json} --ignore-path .gitignore --check",
         "postlint-fix": "npm run prettier-fix",
         "prettier-fix": "prettier **/*.{md,yml,yaml,json} --ignore-path .gitignore --write"
