@@ -14,6 +14,7 @@ export interface Entities {
     map: MapEntity;
     box?: BoxEntity;
     hud: HudEntity;
+    [id: string]: any;
 }
 
 function getEntities() {
@@ -21,7 +22,7 @@ function getEntities() {
         keyboardController: keyboardControllerEntity,
         mouseController: mouseControllerEntity,
         map: mapEntity,
-        // box: boxEntity,
+        // box: boxEntity(),
         hud: hudEntity,
     };
 
