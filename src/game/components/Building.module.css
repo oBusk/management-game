@@ -3,3 +3,12 @@
     font-size: 80px;
     transform: translate(-50%, -50%);
 }
+
+.preview {
+    color: transparent;
+    text-shadow: 0 0 0 rgb(144, 238, 144, 0.5);
+}
+
+.previewInvalid {
+    text-shadow: 0 0 0 rgb(255, 0, 0, 0.5);
+}

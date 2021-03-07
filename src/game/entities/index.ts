@@ -1,3 +1,6 @@
+import blueprintPreviewEntity, {
+    BlueprintPreviewEntity,
+} from "./blueprint-preview";
 import hudEntity, { HudEntity } from "./hud";
 import keyboardControllerEntity, {
     KeyboardControllerEntity,
@@ -16,6 +19,7 @@ export interface Entities {
     map: MapEntity;
     hud: HudEntity;
     userState: UserStateEntity;
+    blueprintPreview: BlueprintPreviewEntity;
     [id: string]: any;
 }
 
@@ -27,6 +31,7 @@ function getEntities() {
         map: mapEntity,
         hud: hudEntity,
         userState: userStateEntity,
+        blueprintPreview: blueprintPreviewEntity(),
     };
 
     return entities;

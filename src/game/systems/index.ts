@@ -1,5 +1,6 @@
 import { GameEngineSystem } from "react-game-engine";
 import { Entities } from "../entities";
+import blueprintPreviewSystem from "./blueprint-preview";
 import buildSystem from "./build";
 import hudSystem from "./hud";
 import incomeSystem from "./income";
@@ -13,6 +14,7 @@ const systems: GameEngineSystem<Entities>[] = [
     keyboardControllerSystem, // Needs to be first to feed subsequent systems with keys
     mouseControllerSystem,
     hudSystem,
+    blueprintPreviewSystem,
     buildSystem,
     incomeSystem,
     userStateSystem,

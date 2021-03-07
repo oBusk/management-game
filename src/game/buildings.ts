@@ -1,9 +1,7 @@
 import { Resources } from "../resources";
+import { BuildingProps } from "./components/Building";
 
-export interface BuildingState {
-    type?: string;
-    symbol?: string;
-    x?: number;
-    y?: number;
+export interface BuildingState extends BuildingProps {
+    price?: Resources;
     income?: Resources;
 }

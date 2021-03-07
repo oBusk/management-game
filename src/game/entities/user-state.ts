@@ -1,4 +1,6 @@
-export type AvailableBlueprints = null | "factory" | "house";
+import { BuildingTypes } from "./buildings";
+
+export type AvailableBlueprints = null | BuildingTypes;
 
 export interface UserStateEntity {
     currentBlueprint: AvailableBlueprints;
