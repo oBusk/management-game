@@ -1,23 +1,11 @@
 import { Resources } from "../../resources";
 import { canAfford, isWithinMap } from "../../util";
 import { Entities } from "../entities";
-import factoryEntity from "../entities/buildings/factory";
-import houseEntity from "../entities/buildings/house";
+import { buildings } from "../entities/buildings";
 
 const id = (seed = 0) => (prefix = "") => `${prefix}${++seed}`;
 
-const factoryId = ((id) => () => id("factory"))(id(0));
-const houseId = ((id) => () => id("house"))(id(0));
-
-const factoryPrice: Resources = {
-    escudos: 300,
-    wood: 10,
-} as const;
-
-const housePrice: Resources = {
-    escudos: 20,
-    wood: 10,
-} as const;
+const buildingId = ((id) => () => id("building"))(id(0));
 
 const pay = (resources: Resources, price: Resources) => {
     resources.escudos = (resources.escudos ?? 0) - (price.escudos ?? 0);
@@ -43,21 +31,13 @@ const buildSystem = (entities: Entities) => {
             return entities;
         }
 
-        const price =
-            currentBlueprint === "factory" ? factoryPrice : housePrice;
+        const entity = buildings[currentBlueprint](clickedPosition);
 
-        if (!canAfford(resources, price)) {
-            return entities;
+        if (entity?.price && canAfford(resources, entity.price)) {
+            pay(resources, entity.price);
+
+            entities[buildingId()] = entity;
         }
-
-        pay(resources, price);
-
-        const id = currentBlueprint === "factory" ? factoryId() : houseId();
-
-        entities[id] =
-            currentBlueprint === "factory"
-                ? factoryEntity(clickedPosition)
-                : houseEntity(clickedPosition);
     }
 
     return entities;
