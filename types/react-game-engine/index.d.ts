@@ -104,18 +104,12 @@ declare module "react-game-engine" {
         input: Input;
     }
 
-    export interface Entity {
-        [key: string]: any;
-    }
+    export type Entities = Record<string, any>;
 
     /** Prepared type for creating EntityTypes when using the default renderer (where Entity.renderer is a ReactElement) */
-    export type DefaultRenderedEntity<P = {}> = {
+    export type DefaultRenderedEntity<P = any> = {
         renderer: React.ReactElement;
     } & P;
-
-    export interface Entities {
-        [uniqueId: string]: Entity;
-    }
 
     export type GameEngineSystem = (
         entities: Entities,
