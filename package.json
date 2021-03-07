@@ -2,7 +2,14 @@
     "name": "management-game",
     "private": true,
     "version": "0.1.0",
-    "description": "Trying to make a simple game with react-game-engine",
+    "description": "🗃🎮 Trying to make a simple game with react-game-engine",
+    "categories": [
+        "Management",
+        "Tycoon",
+        "Game",
+        "React",
+        "react-game-engine"
+    ],
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
