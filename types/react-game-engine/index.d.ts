@@ -9,9 +9,14 @@ declare module "react-game-engine" {
         window: Window;
     }
 
+    export interface GameEngineRenderer {
+        (entities: Entities, window: Window): React.ReactNode;
+    }
+
     export function DefaultRenderer(
-        defaultRendererOptions: DefaultRendererOptions,
-    ): any;
+        entities: Entities,
+        window: Window,
+    ): React.ReactNode;
 
     export class DefaultTimer {}
 
@@ -40,6 +45,15 @@ declare module "react-game-engine" {
         touches: Array<TouchEvent>;
     }
 
+    export interface Entity<R = React.ReactElement> {
+        renderer: R;
+        [key: string]: any;
+    }
+
+    export interface Entities<R = React.ReactElement> {
+        [uniqueId]: Entity<R>;
+    }
+
     export type GameEngineSystem = (
         entities: any,
         update: GameEngineUpdateEventOptionType,
@@ -47,8 +61,8 @@ declare module "react-game-engine" {
 
     export interface GameEngineProperties {
         systems?: any[];
-        entities?: {} | Promise<any>;
-        renderer?: any;
+        entities?: Entities | Promise<Entities>;
+        renderer?: GameEngineRenderer;
         touchProcessor?: any;
         timer?: any;
         running?: boolean;
