@@ -1,8 +1,10 @@
-import Box from "./components/Box";
+import box from "./components/Box";
+import hud from "./components/Hud";
 
 function Entities() {
     const entities = {
-        Box,
+        box,
+        hud,
     };
 
     return entities;
