@@ -1,7 +1,6 @@
-export interface ResourcesEntity {
-    escudos: number;
-    wood: number;
-}
+import { Resources } from "../../resources";
+
+export type ResourcesEntity = Resources;
 
 const resourcesEntity: ResourcesEntity = {
     escudos: 300,

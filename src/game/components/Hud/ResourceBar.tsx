@@ -1,8 +1,8 @@
-import { ResourcesEntity } from "../../entities/resources";
+import { Resources } from "../../../resources";
 import styles from "./ResourceBar.module.css";
 
 export interface Props {
-    resources?: ResourcesEntity;
+    resources?: Resources;
 }
 
 const ResourceBar = ({ resources }: Props) => (

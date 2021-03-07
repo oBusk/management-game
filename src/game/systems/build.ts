@@ -1,33 +1,34 @@
+import { Resources } from "../../resources";
 import { Entities } from "../entities";
 import factoryEntity from "../entities/factory";
 import houseEntity from "../entities/house";
-import { ResourcesEntity } from "../entities/resources";
 
 const id = (seed = 0) => (prefix = "") => `${prefix}${++seed}`;
 
 const factoryId = ((id) => () => id("factory"))(id(0));
 const houseId = ((id) => () => id("house"))(id(0));
 
-const factoryPrice = {
+const factoryPrice: Resources = {
     escudos: 300,
     wood: 10,
 } as const;
 
-const housePrice = {
+const housePrice: Resources = {
     escudos: 20,
     wood: 10,
+} as const;
+
+const hasResources = (resources: Resources, price: Resources): boolean => {
+    return (
+        (price.escudos ?? Number.MAX_SAFE_INTEGER) <=
+            (resources.escudos ?? 0) &&
+        (price.wood ?? Number.MAX_SAFE_INTEGER) <= (price.wood ?? 0)
+    );
 };
 
-const hasResources = (
-    resources: ResourcesEntity,
-    price: ResourcesEntity,
-): boolean => {
-    return resources.escudos >= price.escudos && resources.wood >= price.wood;
-};
-
-const pay = (resources: ResourcesEntity, price: ResourcesEntity) => {
-    resources.escudos -= price.escudos ?? 0;
-    resources.wood -= price.wood ?? 0;
+const pay = (resources: Resources, price: Resources) => {
+    resources.escudos = (resources.escudos ?? 0) - (price.escudos ?? 0);
+    resources.wood = (resources.wood ?? 0) - (price.wood ?? 0);
 };
 
 const buildSystem = (entities: Entities) => {
