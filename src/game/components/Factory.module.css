@@ -1,0 +1,5 @@
+.factory {
+    position: absolute;
+    font-size: 80px;
+    transform: translate(-50%, -50%);
+}
