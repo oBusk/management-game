@@ -4,6 +4,7 @@ import { capitalize, resourceAsString } from "../../../util";
 import { buildings } from "../../entities/buildings";
 import { AvailableBlueprints } from "../../entities/user-state";
 import styles from "./BuildBar.module.css";
+import Hotkey from "./shared/Hotkey";
 
 export interface BuildBarProps {
     dispatch?: Dispatch;
@@ -15,7 +16,7 @@ const BuildBar = ({ dispatch, currentBlueprint }: BuildBarProps) => {
 
     return (
         <div className={styles.buildBar}>
-            {currentBlueprint != null ? (
+            {currentBlueprint != null && (
                 <button
                     className={styles.buildButton}
                     onClick={() =>
@@ -26,13 +27,13 @@ const BuildBar = ({ dispatch, currentBlueprint }: BuildBarProps) => {
                     }
                 >
                     <div className={styles.buildButtonIcon}>❌</div>
-                    <div>Cancel</div>
+                    <div>
+                        Cancel <Hotkey>Esc</Hotkey>
+                    </div>
                     <div>&nbsp;</div>
                 </button>
-            ) : (
-                <></>
             )}
-            {buildingOptions.map(({ type = "house", price = {} }) => {
+            {buildingOptions.map(({ type = "house", price = {}, hotkey }) => {
                 const priceString = `(${resourceAsString(price)})`;
                 const emoji = Emoji[`building-${type}` as const];
 
@@ -54,7 +55,14 @@ const BuildBar = ({ dispatch, currentBlueprint }: BuildBarProps) => {
                         }
                     >
                         <div className={styles.buildButtonIcon}>{emoji}</div>
-                        <div>{capitalize(type)}</div>
+                        <div>
+                            {capitalize(type)}
+                            {hotkey && (
+                                <span>
+                                    &nbsp;<Hotkey>{hotkey}</Hotkey>
+                                </span>
+                            )}
+                        </div>
                         <div>{priceString}</div>
                     </button>
                 );

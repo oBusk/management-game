@@ -31,6 +31,14 @@ const userStateSystem = (
             userState.currentBlueprint = event.value;
         }
 
+        if (justPressed(keyboardController, "f")) {
+            userState.currentBlueprint = "factory";
+        }
+
+        if (justPressed(keyboardController, "h")) {
+            userState.currentBlueprint = "house";
+        }
+
         if (justPressed(keyboardController, "escape")) {
             userState.currentBlueprint = null;
         }

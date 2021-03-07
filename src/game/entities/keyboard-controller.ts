@@ -3,6 +3,8 @@ export interface KeyboardControllerEntity {
     a: boolean;
     s: boolean;
     d: boolean;
+    f: boolean;
+    h: boolean;
     space: boolean;
     control: boolean;
     escape: boolean;
@@ -14,6 +16,8 @@ const keyboardControllerEntity: KeyboardControllerEntity = {
     a: false,
     s: false,
     d: false,
+    f: false,
+    h: false,
     space: false,
     escape: false,
     control: false,

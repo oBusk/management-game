@@ -11,6 +11,7 @@ const factoryEntity = ({
     type: "factory",
     x,
     y,
+    hotkey: "f",
     price: {
         escudos: 100,
         wood: 10,

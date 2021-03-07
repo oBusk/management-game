@@ -11,6 +11,7 @@ const houseEntity = ({
     type: "house",
     x,
     y,
+    hotkey: "h",
     price: {
         escudos: 20,
         wood: 10,

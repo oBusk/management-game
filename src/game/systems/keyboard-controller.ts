@@ -25,6 +25,8 @@ const w = createKeyReader(["w", "W", "ArrowUp"]);
 const a = createKeyReader(["a", "A", "ArrowLeft"]);
 const s = createKeyReader(["s", "S", "ArrowDown"]);
 const d = createKeyReader(["d", "D", "ArrowRight"]);
+const f = createKeyReader(["f", "F"]);
+const h = createKeyReader(["h", "H"]);
 const space = createKeyReader([" "]);
 const control = createKeyReader(["Control"]);
 const escape = createKeyReader(["Escape"]);
@@ -37,11 +39,13 @@ const keyboardControllerSystem = (
 ) => {
     const { input } = args;
 
-    const current = {
+    const current: KeyboardControllerEntity = {
         w: w(input),
         a: a(input),
         s: s(input),
         d: d(input),
+        f: f(input),
+        h: h(input),
         space: space(input),
         control: control(input),
         escape: escape(input),
