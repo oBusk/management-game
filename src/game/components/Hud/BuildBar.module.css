@@ -1,0 +1,13 @@
+.buildBar {
+    composes: hudBar from "./shared.css";
+    top: 0;
+    right: 0;
+}
+
+.buildButton {
+    /* */
+}
+
+.buildButtonIcon {
+    font-size: 40px;
+}

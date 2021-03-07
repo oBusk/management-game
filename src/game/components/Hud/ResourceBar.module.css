@@ -1,0 +1,6 @@
+
+.resourceBar {
+    composes: hudBar from "./shared.css";
+    top: 0;
+    left: 0;
+}
