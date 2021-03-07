@@ -10,22 +10,23 @@ export interface BuildingProps {
     preview?: { valid?: boolean };
 }
 
-const Building = ({ type, x, y, hide, preview }: BuildingProps) =>
-    hide || !type ? (
-        <></>
-    ) : (
-        <div
-            className={
-                styles.building +
-                " " +
-                (preview ? styles.preview : "") +
-                " " +
-                (!preview?.valid ? styles.previewInvalid : "")
-            }
-            style={{ left: x, top: y }}
-        >
-            {Emoji[`building-${type}` as const]}
-        </div>
-    );
+const Building = ({ type, x, y, hide, preview }: BuildingProps) => (
+    <>
+        {!hide && type && (
+            <div
+                className={
+                    styles.building +
+                    " " +
+                    (preview ? styles.preview : "") +
+                    " " +
+                    (!preview?.valid ? styles.previewInvalid : "")
+                }
+                style={{ left: x, top: y }}
+            >
+                {Emoji[`building-${type}` as const]}
+            </div>
+        )}
+    </>
+);
 
 export default Building;
