@@ -21,12 +21,21 @@ const userStateSystem = (
     entities: Entities,
     { events }: GameEngineUpdateEventOptionType,
 ) => {
-    const { userState } = entities;
+    const { userState, keyboardController } = entities;
 
     if (userState) {
-        events.filter(isSelectBlueprintEvent).forEach(({ value }) => {
-            userState.currentBlueprint = value;
-        });
+        const event = events.find(isSelectBlueprintEvent);
+
+        if (event) {
+            userState.currentBlueprint = event.value;
+        }
+
+        if (
+            keyboardController?.escape &&
+            !keyboardController?.previous?.escape
+        ) {
+            userState.currentBlueprint = null;
+        }
     }
 
     return entities;

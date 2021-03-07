@@ -5,6 +5,7 @@ export interface KeyboardControllerEntity {
     d: boolean;
     space: boolean;
     control: boolean;
+    escape: boolean;
     previous?: Omit<KeyboardControllerEntity, "previous">;
 }
 
@@ -14,6 +15,7 @@ const keyboardControllerEntity: KeyboardControllerEntity = {
     s: false,
     d: false,
     space: false,
+    escape: false,
     control: false,
 };
 

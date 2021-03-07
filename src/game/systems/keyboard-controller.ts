@@ -27,6 +27,7 @@ const s = createKeyReader(["s", "S", "ArrowDown"]);
 const d = createKeyReader(["d", "D", "ArrowRight"]);
 const space = createKeyReader([" "]);
 const control = createKeyReader(["Control"]);
+const escape = createKeyReader(["Escape"]);
 
 let previous: Omit<KeyboardControllerEntity, "previous">;
 
@@ -43,6 +44,7 @@ const keyboardControllerSystem = (
         d: d(input),
         space: space(input),
         control: control(input),
+        escape: escape(input),
     };
 
     entities.keyboardController = {
