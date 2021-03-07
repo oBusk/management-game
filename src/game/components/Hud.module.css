@@ -1,18 +1,32 @@
-.resourceBar {
+.hudBar {
     position: fixed;
-    top: 0;
-    left: 0;
     background: rgba(0, 0, 0, 0.5);
     color: white;
 }
 
+.resourceBar {
+    composes: hudBar;
+    top: 0;
+    left: 0;
+}
+
+.buildBar {
+    composes: hudBar;
+    top: 0;
+    right: 0;
+}
+
+.buildButton {
+    /* */
+}
+
+.buildButtonIcon {
+    font-size: 40px;
+}
+
 .bottomBar {
-    position: fixed;
+    composes: hudBar;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 32px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
 }
