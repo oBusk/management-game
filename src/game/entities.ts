@@ -7,10 +7,12 @@ import mapEntity, { MapEntity } from "./components/Map";
 import mouseControllerEntity, {
     MouseControllerEntity,
 } from "./components/mouse-controller";
+import resourcesEntity, { ResourcesEntity } from "./components/resources";
 
 export interface Entities {
     keyboardController: KeyboardControllerEntity;
     mouseController: MouseControllerEntity;
+    resources: ResourcesEntity;
     map: MapEntity;
     box?: BoxEntity;
     hud: HudEntity;
@@ -21,6 +23,7 @@ function getEntities() {
     const entities: Entities = {
         keyboardController: keyboardControllerEntity,
         mouseController: mouseControllerEntity,
+        resources: resourcesEntity,
         map: mapEntity,
         // box: boxEntity(),
         hud: hudEntity,

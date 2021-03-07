@@ -103,7 +103,6 @@ declare module "react-game-engine" {
         time: TimeUpdate;
         input: Input;
     }
-
     export type Entities = Record<string, any>;
 
     /** Prepared type for creating EntityTypes when using the default renderer (where Entity.renderer is a ReactElement) */
@@ -111,13 +110,12 @@ declare module "react-game-engine" {
         renderer: React.ReactElement;
     } & P;
 
-    export type GameEngineSystem = (
-        entities: Entities,
-        update: GameEngineUpdateEventOptionType,
-    ) => any;
+    export interface GameEngineSystem<E = Entities> {
+        (entities: E, update: GameEngineUpdateEventOptionType): E;
+    }
 
     export interface GameEngineProperties {
-        systems?: any[];
+        systems?: GameEngineSystem[];
         entities?: Entities | Promise<Entities>;
         renderer?: GameEngineRenderer;
         touchProcessor?: any;
