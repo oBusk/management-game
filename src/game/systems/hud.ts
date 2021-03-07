@@ -6,6 +6,7 @@ const hudSystem = (entities: Entities) => {
     if (hud) {
         hud.keyboardController = entities?.keyboardController;
         hud.mouseController = entities?.mouseController;
+        hud.resources = entities?.resources;
     }
 
     return entities;

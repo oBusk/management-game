@@ -1,11 +1,13 @@
 import { DefaultRenderedEntity } from "react-game-engine";
 import styles from "./Box.module.css";
+import { ResourcesEntity } from "./resources";
 
 interface Props {
     width?: number;
     height?: number;
     x?: number;
     y?: number;
+    income?: ResourcesEntity;
 }
 
 export type BoxEntity = DefaultRenderedEntity<Props>;
@@ -24,6 +26,10 @@ const boxEntity = ({
     height,
     x,
     y,
+    income: {
+        escudos: 0.1,
+        wood: 0.01,
+    },
     renderer: <Box />,
 });
 

@@ -114,9 +114,9 @@ declare module "react-game-engine" {
         (entities: E, update: GameEngineUpdateEventOptionType): E;
     }
 
-    export interface GameEngineProperties {
-        systems?: GameEngineSystem[];
-        entities?: Entities | Promise<Entities>;
+    export interface GameEngineProperties<E = Entities> {
+        systems?: GameEngineSystem<E>[];
+        entities?: E | Promise<E>;
         renderer?: GameEngineRenderer;
         touchProcessor?: any;
         timer?: any;
@@ -128,7 +128,9 @@ declare module "react-game-engine" {
         children?: React.ReactNode;
     }
 
-    export class GameEngine extends React.Component<GameEngineProperties> {}
+    export class GameEngine<E = Entities> extends React.Component<
+        GameEngineProperties<E>
+    > {}
 
     export type TouchEventType =
         | "start"
