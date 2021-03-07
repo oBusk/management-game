@@ -1,12 +1,18 @@
 import { DefaultRenderedEntity } from "react-game-engine";
-import House, { HouseProps } from "../../components/buildings/House";
+import { BuildingState } from "../../buildings";
+import Building from "../../components/Building";
 
-export type HouseEntity = DefaultRenderedEntity<HouseProps>;
+export type BuildingEntity = DefaultRenderedEntity<BuildingState>;
 
-const houseEntity = ({ x = 200, y = 200 }: HouseProps = {}): HouseEntity => ({
+const houseEntity = ({
+    x = 200,
+    y = 200,
+}: BuildingState = {}): BuildingEntity => ({
+    type: "house",
+    symbol: "🏠",
     x,
     y,
-    renderer: <House />,
+    renderer: <Building />,
 });
 
 export default houseEntity;

@@ -1,19 +1,22 @@
 import { DefaultRenderedEntity } from "react-game-engine";
-import Factory, { FactoryProps } from "../../components/buildings/Factory";
+import { BuildingState } from "../../buildings";
+import Building from "../../components/Building";
 
-export type FactoryEntity = DefaultRenderedEntity<FactoryProps>;
+export type FactoryEntity = DefaultRenderedEntity<BuildingState>;
 
 const factoryEntity = ({
     x = 200,
     y = 200,
-}: FactoryProps = {}): FactoryEntity => ({
+}: BuildingState = {}): FactoryEntity => ({
+    type: "factory",
+    symbol: "🏭",
     x,
     y,
     income: {
         escudos: 0.1,
         wood: 0.01,
     },
-    renderer: <Factory />,
+    renderer: <Building />,
 });
 
 export default factoryEntity;
