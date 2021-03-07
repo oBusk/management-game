@@ -37,12 +37,71 @@ declare module "react-game-engine" {
         previousDelta: number;
     }
 
+    export interface BaseInput<T = Element> {
+        name: string;
+        payload: SyntheticEvent<T, Event>;
+    }
+
+    export interface MouseInput<T = Element> extends BaseInput {
+        name:
+            | "onClick"
+            | "onDoubleClick"
+            | "onContextMenu"
+            | "onMouseDown"
+            | "onMouseEnter"
+            | "onMouseLeave"
+            | "onMouseMove"
+            | "onMouseOut"
+            | "onMouseOver"
+            | "onMouseUp";
+        payload: MouseEvent<T>;
+    }
+
+    export interface DragInput<T = Element> extends BaseInput {
+        name:
+            | "onDrag"
+            | "onDragEnd"
+            | "onDragEnter"
+            | "onDragExit"
+            | "onDragLeave"
+            | "onDragOver"
+            | "onDragStart"
+            | "onDrop";
+        payload: DragEvent<T>;
+    }
+
+    export interface WheelInput<T = Element> extends BaseInput {
+        name: "onWheel";
+        payload: WheelEvent<T>;
+    }
+
+    export interface TouchInput<T = Element> extends BaseInput {
+        name: "onTouchCancel" | "onTouchEnd" | "onTouchMove" | "onTouchStart";
+        payload: TouchEvent<T>;
+    }
+
+    export interface KeyInput<T = Element> extends BaseInput {
+        name: "onKeyDown" | "onKeyPress" | "onKeyUp";
+        payload: KeyboardEvent<T>;
+    }
+
+    export type AllInput<T = Element> =
+        | MouseInput<T>
+        | DragInput<T>
+        | WheelInput<T>
+        | TouchInput<T>
+        | KeyInput<T>;
+
+    export type InputNames = AllInput["name"];
+
+    export type Input<T = Element> = AllInput<T>[];
+
     export interface GameEngineUpdateEventOptionType {
         dispatch: (event: any) => void;
         events: Array<any>;
         window: Window;
         time: TimeUpdate;
-        touches: Array<TouchEvent>;
+        input: Input;
     }
 
     export interface Entity<R = React.ReactElement> {
@@ -51,11 +110,11 @@ declare module "react-game-engine" {
     }
 
     export interface Entities<R = React.ReactElement> {
-        [uniqueId]: Entity<R>;
+        [uniqueId: string]: Entity<R>;
     }
 
     export type GameEngineSystem = (
-        entities: any,
+        entities: Entities,
         update: GameEngineUpdateEventOptionType,
     ) => any;
 
