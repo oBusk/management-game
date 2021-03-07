@@ -1,5 +1,11 @@
+import Box from "./components/Box";
+
 function Entities() {
-    return [];
+    const entities = {
+        Box,
+    };
+
+    return entities;
 }
 
 export default Entities;
