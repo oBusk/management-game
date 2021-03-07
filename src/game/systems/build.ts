@@ -1,19 +1,48 @@
-import factoryEntity from "../components/Factory";
 import { Entities } from "../entities";
+import factoryEntity from "../entities/factory";
+import houseEntity from "../entities/house";
+import { ResourcesEntity } from "../entities/resources";
 
 const id = (seed = 0) => (prefix = "") => `${prefix}${++seed}`;
 
 const factoryId = ((id) => () => id("factory"))(id(0));
+const houseId = ((id) => () => id("house"))(id(0));
 
 const factoryPrice = {
     escudos: 300,
     wood: 10,
 } as const;
 
-const buildSystem = (entities: Entities) => {
-    const { mouseController, map, resources } = entities;
+const housePrice = {
+    escudos: 20,
+    wood: 10,
+};
 
-    if (mouseController.left && !mouseController.previous?.left) {
+const hasResources = (
+    resources: ResourcesEntity,
+    price: ResourcesEntity,
+): boolean => {
+    return resources.escudos >= price.escudos && resources.wood >= price.wood;
+};
+
+const pay = (resources: ResourcesEntity, price: ResourcesEntity) => {
+    resources.escudos -= price.escudos ?? 0;
+    resources.wood -= price.wood ?? 0;
+};
+
+const buildSystem = (entities: Entities) => {
+    const {
+        mouseController,
+        map,
+        resources,
+        userState: { currentBlueprint },
+    } = entities;
+
+    if (
+        mouseController.left &&
+        !mouseController.previous?.left &&
+        currentBlueprint != null
+    ) {
         const clickedPosition = mouseController.position;
 
         const clickedOnMap =
@@ -22,17 +51,25 @@ const buildSystem = (entities: Entities) => {
             clickedPosition.x < map.width &&
             clickedPosition.y < map.height;
 
-        const hasResources =
-            resources.escudos >= factoryPrice.escudos &&
-            resources.wood >= factoryPrice.wood;
-
-        if (clickedOnMap && hasResources) {
-            resources.escudos -= factoryPrice.escudos;
-            resources.wood -= factoryPrice.wood;
-            entities[factoryId()] = factoryEntity({
-                ...clickedPosition,
-            });
+        if (!clickedOnMap) {
+            return entities;
         }
+
+        const price =
+            currentBlueprint === "factory" ? factoryPrice : housePrice;
+
+        if (!hasResources(resources, price)) {
+            return entities;
+        }
+
+        pay(resources, price);
+
+        const id = currentBlueprint === "factory" ? factoryId() : houseId();
+
+        entities[id] =
+            currentBlueprint === "factory"
+                ? factoryEntity(clickedPosition)
+                : houseEntity(clickedPosition);
     }
 
     return entities;

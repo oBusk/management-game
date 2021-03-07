@@ -8,6 +8,10 @@
     /* */
 }
 
+.buildButtonActive {
+    background: orange;
+}
+
 .buildButtonIcon {
     font-size: 40px;
 }

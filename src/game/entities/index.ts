@@ -7,6 +7,7 @@ import mouseControllerEntity, {
     MouseControllerEntity,
 } from "./mouse-controller";
 import resourcesEntity, { ResourcesEntity } from "./resources";
+import userStateEntity, { UserStateEntity } from "./user-state";
 
 export interface Entities {
     keyboardController: KeyboardControllerEntity;
@@ -14,6 +15,7 @@ export interface Entities {
     resources: ResourcesEntity;
     map: MapEntity;
     hud: HudEntity;
+    userState: UserStateEntity;
     [id: string]: any;
 }
 
@@ -24,6 +26,7 @@ function getEntities() {
         resources: resourcesEntity,
         map: mapEntity,
         hud: hudEntity,
+        userState: userStateEntity,
     };
 
     return entities;

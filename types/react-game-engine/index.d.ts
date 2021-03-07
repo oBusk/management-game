@@ -96,8 +96,14 @@ declare module "react-game-engine" {
 
     export type Input<T = Element> = AllInput<T>[];
 
+    export type DispatchEvent =
+        | { type: "started" | "stopped" | "swapped" }
+        | any;
+
+    export type Dispatch = (event: DispatchEvent) => void;
+
     export interface GameEngineUpdateEventOptionType {
-        dispatch: (event: any) => void;
+        dispatch: Dispatch;
         events: Array<any>;
         window: Window;
         time: TimeUpdate;
@@ -121,7 +127,7 @@ declare module "react-game-engine" {
         touchProcessor?: any;
         timer?: any;
         running?: boolean;
-        onEvent?: any;
+        onEvent?: (event: DispatchEvent) => void;
         /** An object containing styles for the root container */
         style?: React.CSSProperties;
         className?: string;
