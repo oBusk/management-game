@@ -6,7 +6,9 @@ interface Props {
     y?: number;
 }
 
-const Box = ({ x, y }: Props) => <div className={styles.box} />;
+const Box = ({ x, y }: Props) => (
+    <div className={styles.box} style={{ left: x, top: y }} />
+);
 
 const box: Entity = {
     x: 200,
