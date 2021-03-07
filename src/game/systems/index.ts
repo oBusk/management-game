@@ -1,12 +1,12 @@
 import hudSystem from "./hud";
 import keyboardControllerSystem from "./keyboard-controller";
-import movementSystem from "./movement";
+// import movementSystem from "./movement";
 
 // If we use the current solution that modifies the updateArgs object, the order is very important.
 const systems = [
     keyboardControllerSystem, // Needs to be first to feed subsequent systems with keys
     hudSystem,
-    movementSystem,
+    // movementSystem,
 ];
 
 export default systems;
