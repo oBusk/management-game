@@ -1,9 +1,9 @@
 import {
-    Entities,
     GameEngineUpdateEventOptionType,
     Input,
     InputNames,
 } from "react-game-engine";
+import { Entities } from "../entities";
 
 export interface KeyboardControllerState {
     w: boolean;

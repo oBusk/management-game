@@ -1,4 +1,4 @@
-import { Entity } from "react-game-engine";
+import { DefaultRenderedEntity } from "react-game-engine";
 import styles from "./Box.module.css";
 
 interface Props {
@@ -6,14 +6,16 @@ interface Props {
     y?: number;
 }
 
+export type BoxEntity = DefaultRenderedEntity<Props>;
+
 const Box = ({ x, y }: Props) => (
     <div className={styles.box} style={{ left: x, top: y }} />
 );
 
-const box: Entity = {
+const boxEntity: BoxEntity = {
     x: 200,
     y: 200,
     renderer: <Box />,
 };
 
-export default box;
+export default boxEntity;

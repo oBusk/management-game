@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { GameEngine } from "react-game-engine";
-import Entities from "./entities";
+import getEntities from "./entities";
 import systems from "./systems";
 import style from "./game.module.css";
 
@@ -10,7 +10,7 @@ class Game extends Component {
             <GameEngine
                 className={style.game}
                 systems={systems}
-                entities={Entities()}
+                entities={getEntities()}
             />
         );
     }

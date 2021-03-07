@@ -1,9 +1,8 @@
-import { Entities } from "react-game-engine";
-import { HudEntity } from "../components/Hud";
+import { Entities } from "../entities";
 import { KeyboardControllerUpdate } from "./keyboard-controller";
 
 const HUD = (entities: Entities, args: KeyboardControllerUpdate) => {
-    const hud: HudEntity = entities.hud;
+    const hud = entities.hud;
 
     if (hud) {
         hud.keyboardController = args.keyboardController;
