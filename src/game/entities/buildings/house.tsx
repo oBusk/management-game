@@ -1,5 +1,5 @@
 import { DefaultRenderedEntity } from "react-game-engine";
-import House, { HouseProps } from "../components/House";
+import House, { HouseProps } from "../../components/buildings/House";
 
 export type HouseEntity = DefaultRenderedEntity<HouseProps>;
 

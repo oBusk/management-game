@@ -1,7 +1,7 @@
 import { Resources } from "../../resources";
 import { Entities } from "../entities";
-import factoryEntity from "../entities/factory";
-import houseEntity from "../entities/house";
+import factoryEntity from "../entities/buildings/factory";
+import houseEntity from "../entities/buildings/house";
 
 const id = (seed = 0) => (prefix = "") => `${prefix}${++seed}`;
 

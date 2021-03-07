@@ -1,5 +1,5 @@
 import { DefaultRenderedEntity } from "react-game-engine";
-import Factory, { FactoryProps } from "../components/Factory";
+import Factory, { FactoryProps } from "../../components/buildings/Factory";
 
 export type FactoryEntity = DefaultRenderedEntity<FactoryProps>;
 

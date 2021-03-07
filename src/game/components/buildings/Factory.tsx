@@ -1,4 +1,4 @@
-import { Resources } from "../../resources";
+import { Resources } from "../../../resources";
 import styles from "./Factory.module.css";
 
 export interface FactoryProps {
