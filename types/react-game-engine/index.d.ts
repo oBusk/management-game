@@ -128,6 +128,7 @@ declare module "react-game-engine" {
         onEvent?: any;
         /** An object containing styles for the root container */
         style?: React.CSSProperties;
+        className?: string;
         children?: React.ReactNode;
     }
 
