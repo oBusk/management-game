@@ -1,4 +1,5 @@
 import { GameEngineUpdateEventOptionType } from "react-game-engine";
+import { justPressed } from "../../util";
 import { Entities } from "../entities";
 import { AvailableBlueprints } from "../entities/user-state";
 
@@ -30,10 +31,7 @@ const userStateSystem = (
             userState.currentBlueprint = event.value;
         }
 
-        if (
-            keyboardController?.escape &&
-            !keyboardController?.previous?.escape
-        ) {
+        if (justPressed(keyboardController, "escape")) {
             userState.currentBlueprint = null;
         }
     }

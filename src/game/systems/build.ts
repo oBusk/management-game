@@ -1,5 +1,5 @@
 import { Resources } from "../../resources";
-import { canAfford, isWithinMap } from "../../util";
+import { canAfford, isWithinMap, justPressed } from "../../util";
 import { Entities } from "../entities";
 import { buildings } from "../entities/buildings";
 
@@ -20,11 +20,7 @@ const buildSystem = (entities: Entities) => {
         userState: { currentBlueprint },
     } = entities;
 
-    if (
-        mouseController.left &&
-        !mouseController.previous?.left &&
-        currentBlueprint != null
-    ) {
+    if (justPressed(mouseController, "left") && currentBlueprint != null) {
         const clickedPosition = mouseController.position;
 
         if (!isWithinMap(map, clickedPosition)) {
