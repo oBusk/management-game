@@ -1,9 +1,9 @@
 import { DefaultRenderedEntity } from "react-game-engine";
-import { KeyboardControllerState } from "../systems/keyboard-controller";
 import styles from "./Hud.module.css";
+import { KeyboardControllerEntity } from "./keyboard-controller";
 
 interface Props {
-    keyboardController?: KeyboardControllerState;
+    keyboardController?: KeyboardControllerEntity;
 }
 
 export type HudEntity = DefaultRenderedEntity<Props>;

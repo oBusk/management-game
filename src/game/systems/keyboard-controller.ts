@@ -3,22 +3,8 @@ import {
     Input,
     InputNames,
 } from "react-game-engine";
+import { KeyboardControllerEntity } from "../components/keyboard-controller";
 import { Entities } from "../entities";
-
-export interface KeyboardControllerState {
-    w: boolean;
-    a: boolean;
-    s: boolean;
-    d: boolean;
-    space: boolean;
-    control: boolean;
-    previous: Omit<KeyboardControllerState, "previous">;
-}
-
-export interface KeyboardControllerUpdate
-    extends GameEngineUpdateEventOptionType {
-    keyboardController?: KeyboardControllerState;
-}
 
 const readKey = (input: Input, keys: string[], name: InputNames) =>
     input.find((x) => x.name === name && keys.indexOf(x.payload.key) !== -1);
@@ -42,32 +28,31 @@ const d = createKeyReader(["d", "D", "ArrowRight"]);
 const space = createKeyReader([" "]);
 const control = createKeyReader(["Control"]);
 
-let previous: Omit<KeyboardControllerState, "previous">;
+let previous: Omit<KeyboardControllerEntity, "previous">;
 
-const KeyboardController = (
-    Wrapped = (x: Entities, _: KeyboardControllerUpdate) => x,
-) => (entities: Entities, args: KeyboardControllerUpdate) => {
-    if (!args.keyboardController) {
-        const input = args.input;
+const keyboardControllerSystem = (
+    entities: Entities,
+    args: GameEngineUpdateEventOptionType,
+) => {
+    const { input } = args;
 
-        const current = {
-            w: w(input),
-            a: a(input),
-            s: s(input),
-            d: d(input),
-            space: space(input),
-            control: control(input),
-        };
+    const current = {
+        w: w(input),
+        a: a(input),
+        s: s(input),
+        d: d(input),
+        space: space(input),
+        control: control(input),
+    };
 
-        args.keyboardController = {
-            ...current,
-            previous,
-        };
+    entities.keyboardController = {
+        ...current,
+        previous,
+    };
 
-        previous = current;
-    }
+    previous = current;
 
-    return Wrapped(entities, args);
+    return entities;
 };
 
-export default KeyboardController;
+export default keyboardControllerSystem;

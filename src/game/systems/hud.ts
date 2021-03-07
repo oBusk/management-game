@@ -1,14 +1,13 @@
 import { Entities } from "../entities";
-import { KeyboardControllerUpdate } from "./keyboard-controller";
 
-const HUD = (entities: Entities, args: KeyboardControllerUpdate) => {
+const hudSystem = (entities: Entities) => {
     const hud = entities.hud;
 
     if (hud) {
-        hud.keyboardController = args.keyboardController;
+        hud.keyboardController = entities?.keyboardController;
     }
 
     return entities;
 };
 
-export default HUD;
+export default hudSystem;

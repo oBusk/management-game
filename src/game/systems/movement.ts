@@ -1,13 +1,9 @@
 import { Entities } from "../entities";
-import { KeyboardControllerUpdate } from "./keyboard-controller";
 
 const MOVEMENT_SPEED = 10;
 
-const Movement = (
-    entities: Entities,
-    { keyboardController }: KeyboardControllerUpdate,
-) => {
-    const { box } = entities;
+const movementSystem = (entities: Entities) => {
+    const { box, keyboardController } = entities;
 
     if (box && keyboardController) {
         const { w, a, s, d, space, control } = keyboardController;
@@ -26,4 +22,4 @@ const Movement = (
     return entities;
 };
 
-export default Movement;
+export default movementSystem;
