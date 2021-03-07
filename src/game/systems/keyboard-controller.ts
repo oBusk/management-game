@@ -3,7 +3,7 @@ import {
     Input,
     InputNames,
 } from "react-game-engine";
-import { KeyboardControllerEntity } from "../components/keyboard-controller";
+import { KeyboardControllerEntity } from "../entities/keyboard-controller";
 import { Entities } from "../entities";
 
 const readKey = (input: Input, keys: string[], name: InputNames) =>

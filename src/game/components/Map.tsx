@@ -1,21 +1,12 @@
-import { DefaultRenderedEntity } from "react-game-engine";
 import styles from "./Map.module.css";
 
-interface Props {
+export interface MapProps {
     width?: number;
     height?: number;
 }
 
-export type MapEntity = DefaultRenderedEntity<Props>;
-
-const Map = ({ width, height }: Props) => (
+const Map = ({ width, height }: MapProps) => (
     <div className={styles.map} style={{ width, height }} />
 );
 
-const mapEntity: MapEntity = {
-    width: 800,
-    height: 800,
-    renderer: <Map />,
-};
-
-export default mapEntity;
+export default Map;

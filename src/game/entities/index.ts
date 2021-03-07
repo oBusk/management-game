@@ -1,20 +1,18 @@
-import { BoxEntity } from "./components/Box";
-import hudEntity, { HudEntity } from "./components/Hud";
+import hudEntity, { HudEntity } from "./hud";
 import keyboardControllerEntity, {
     KeyboardControllerEntity,
-} from "./components/keyboard-controller";
-import mapEntity, { MapEntity } from "./components/Map";
+} from "./keyboard-controller";
+import mapEntity, { MapEntity } from "./map";
 import mouseControllerEntity, {
     MouseControllerEntity,
-} from "./components/mouse-controller";
-import resourcesEntity, { ResourcesEntity } from "./components/resources";
+} from "./mouse-controller";
+import resourcesEntity, { ResourcesEntity } from "./resources";
 
 export interface Entities {
     keyboardController: KeyboardControllerEntity;
     mouseController: MouseControllerEntity;
     resources: ResourcesEntity;
     map: MapEntity;
-    box?: BoxEntity;
     hud: HudEntity;
     [id: string]: any;
 }
@@ -25,7 +23,6 @@ function getEntities() {
         mouseController: mouseControllerEntity,
         resources: resourcesEntity,
         map: mapEntity,
-        // box: boxEntity(),
         hud: hudEntity,
     };
 

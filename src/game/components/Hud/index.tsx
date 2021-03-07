@@ -1,20 +1,17 @@
-import { DefaultRenderedEntity } from "react-game-engine";
-import { KeyboardControllerEntity } from "../keyboard-controller";
-import { MouseControllerEntity } from "../mouse-controller";
-import { ResourcesEntity } from "../resources";
+import { KeyboardControllerEntity } from "../../entities/keyboard-controller";
+import { MouseControllerEntity } from "../../entities/mouse-controller";
+import { ResourcesEntity } from "../../entities/resources";
 import BottomBar from "./BottomBar";
 import BuildBar from "./BuildBar";
 import ResourceBar from "./ResourceBar";
 
-interface Props {
+export interface HudProps {
     keyboardController?: KeyboardControllerEntity;
     mouseController?: MouseControllerEntity;
     resources?: ResourcesEntity;
 }
 
-export type HudEntity = DefaultRenderedEntity<Props>;
-
-const Hud = ({ keyboardController, mouseController, resources }: Props) => {
+const Hud = ({ keyboardController, mouseController, resources }: HudProps) => {
     return (
         <>
             <ResourceBar resources={resources} />
@@ -27,8 +24,4 @@ const Hud = ({ keyboardController, mouseController, resources }: Props) => {
     );
 };
 
-const hudEntity: HudEntity = {
-    renderer: <Hud />,
-};
-
-export default hudEntity;
+export default Hud;

@@ -3,7 +3,7 @@ import {
     Input,
     InputNames,
 } from "react-game-engine";
-import { MouseControllerEntity } from "../components/mouse-controller";
+import { MouseControllerEntity } from "../entities/mouse-controller";
 import { Entities } from "../entities";
 
 const readButton = (input: Input, buttons: number[], name: InputNames) =>

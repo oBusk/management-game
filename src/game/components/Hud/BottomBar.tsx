@@ -1,5 +1,5 @@
-import { KeyboardControllerEntity } from "../keyboard-controller";
-import { MouseControllerEntity } from "../mouse-controller";
+import { KeyboardControllerEntity } from "../../entities/keyboard-controller";
+import { MouseControllerEntity } from "../../entities/mouse-controller";
 import styles from "./BottomBar.module.css";
 
 interface Props {

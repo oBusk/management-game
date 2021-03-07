@@ -1,4 +1,4 @@
-import { ResourcesEntity } from "../resources";
+import { ResourcesEntity } from "../../entities/resources";
 import styles from "./ResourceBar.module.css";
 
 export interface Props {
