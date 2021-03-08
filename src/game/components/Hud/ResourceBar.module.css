@@ -1,6 +1,17 @@
-
 .resourceBar {
     composes: hudBar from "./shared.css";
     top: 0;
     left: 0;
+}
+
+.income {
+    padding-left: 14px;
+}
+
+.incomePositive {
+    color: rgba(28, 196, 28, 0.8);
+}
+
+.incomeNegative {
+    color: rgba(196, 28, 28, 0.8);
 }

@@ -16,6 +16,10 @@ const houseEntity = ({
         escudos: 20,
         wood: 10,
     },
+    income: {
+        escudos: -0.001,
+        wood: -0.1,
+    },
     renderer: <Building />,
 });
 

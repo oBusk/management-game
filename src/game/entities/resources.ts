@@ -1,6 +1,8 @@
 import { Resources } from "../../resources";
 
-export type ResourcesEntity = Resources;
+export interface ResourcesEntity extends Resources {
+    previous?: Resources;
+}
 
 const resourcesEntity: ResourcesEntity = {
     escudos: 300,
