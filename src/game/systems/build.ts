@@ -1,7 +1,9 @@
+import { GameEngineUpdateEventOptionType } from "react-game-engine";
 import { Resources } from "../../resources";
-import { canAfford, isWithinMap, justPressed } from "../../util";
+import { canAfford, isWithinMap } from "../../util";
 import { Entities } from "../entities";
 import { buildings } from "../entities/buildings";
+import { readButton } from "./mouse-controller";
 
 const id = (seed = 0) => (prefix = "") => `${prefix}${++seed}`;
 
@@ -12,7 +14,10 @@ const pay = (resources: Resources, price: Resources) => {
     resources.wood = (resources.wood ?? 0) - (price.wood ?? 0);
 };
 
-const buildSystem = (entities: Entities) => {
+const buildSystem = (
+    entities: Entities,
+    { input }: GameEngineUpdateEventOptionType,
+) => {
     const {
         mouseController,
         map,
@@ -20,7 +25,8 @@ const buildSystem = (entities: Entities) => {
         userState: { currentBlueprint },
     } = entities;
 
-    if (justPressed(mouseController, "left") && currentBlueprint != null) {
+    if (readButton(input, [0], "onClick") && currentBlueprint != null) {
+        // Should read position from onClick instead
         const clickedPosition = mouseController.position;
 
         if (!isWithinMap(map, clickedPosition)) {

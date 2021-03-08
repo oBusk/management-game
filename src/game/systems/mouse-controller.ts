@@ -6,7 +6,7 @@ import {
 import { MouseControllerEntity } from "../entities/mouse-controller";
 import { Entities } from "../entities";
 
-const readButton = (input: Input, buttons: number[], name: InputNames) =>
+export const readButton = (input: Input, buttons: number[], name: InputNames) =>
     input.find(
         (x) => x.name === name && buttons.indexOf(x.payload.button) !== -1,
     );
