@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Dispatch } from "react-game-engine";
 import { Emoji } from "../../../emoji";
 import { capitalize, resourceAsString } from "../../../util";
@@ -39,13 +40,10 @@ const BuildBar = ({ dispatch, currentBlueprint }: BuildBarProps) => {
 
                 return (
                     <button
-                        className={
-                            styles.buildButton +
-                            " " +
-                            (currentBlueprint === type
-                                ? styles.buildButtonActive
-                                : "")
-                        }
+                        className={classNames(styles.buildButton, {
+                            [styles.buildButtonActive]:
+                                currentBlueprint === type,
+                        })}
                         title={`Build ${type} ${priceString}`}
                         onClick={() =>
                             dispatch?.({

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Emoji } from "../../emoji";
 import { BuildingTypes } from "../entities/buildings";
 import styles from "./Building.module.css";
@@ -14,13 +15,10 @@ const Building = ({ type, x, y, hide, preview }: BuildingProps) => (
     <>
         {!hide && type && (
             <div
-                className={
-                    styles.building +
-                    " " +
-                    (preview ? styles.preview : "") +
-                    " " +
-                    (!preview?.valid ? styles.previewInvalid : "")
-                }
+                className={classNames(styles.building, {
+                    [styles.preview]: !!preview,
+                    [styles.previewInvalid]: !preview?.valid,
+                })}
                 style={{ left: x, top: y }}
             >
                 {Emoji[`building-${type}` as const]}

@@ -1,12 +1,13 @@
+import classNames from "classnames";
 import { HTMLAttributes } from "react";
 import styles from "./Hotkey.module.css";
 
 const Hotkey = ({
     children,
-    className: _,
+    className,
     ...rest
 }: HTMLAttributes<HTMLSpanElement>) => (
-    <span className={styles.hotkeyTip} {...rest}>
+    <span className={classNames(className, styles.hotkeyTip)} {...rest}>
         {children}
     </span>
 );

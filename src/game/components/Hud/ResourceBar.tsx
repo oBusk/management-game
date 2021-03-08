@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Emoji } from "../../../emoji";
 import { ResourcesEntity } from "../../entities/resources";
 import styles from "./ResourceBar.module.css";
@@ -15,11 +16,10 @@ const formatIncome = (income: number) => {
     return (
         income !== 0 && (
             <span
-                className={
-                    styles.income +
-                    " " +
-                    (positive ? styles.incomePositive : styles.incomeNegative)
-                }
+                className={classNames(
+                    styles.income,
+                    positive ? styles.incomePositive : styles.incomeNegative,
+                )}
             >
                 {" "}
                 {positive && "+"}
