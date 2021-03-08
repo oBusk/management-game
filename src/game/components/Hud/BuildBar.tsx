@@ -40,6 +40,7 @@ const BuildBar = ({ dispatch, currentBlueprint }: BuildBarProps) => {
 
                 return (
                     <button
+                        key={type}
                         className={classNames(styles.buildButton, {
                             [styles.buildButtonActive]:
                                 currentBlueprint === type,
