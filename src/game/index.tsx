@@ -7,11 +7,12 @@ import style from "./game.module.css";
 class Game extends Component {
     render() {
         return (
-            <GameEngine
+            <div
                 className={style.game}
-                systems={systems}
-                entities={getEntities()}
-            />
+                onContextMenu={(e) => e?.preventDefault?.()}
+            >
+                <GameEngine systems={systems} entities={getEntities()} />
+            </div>
         );
     }
 }
