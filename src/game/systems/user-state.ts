@@ -22,7 +22,7 @@ const userStateSystem = (
     entities: Entities,
     { events }: GameEngineUpdateEventOptionType,
 ) => {
-    const { userState, keyboardController } = entities;
+    const { userState, keyboardController, mouseController } = entities;
 
     if (userState) {
         const event = events.find(isSelectBlueprintEvent);
@@ -39,7 +39,10 @@ const userStateSystem = (
             userState.currentBlueprint = "house";
         }
 
-        if (justPressed(keyboardController, "escape")) {
+        if (
+            justPressed(keyboardController, "escape") ||
+            justPressed(mouseController, "right")
+        ) {
             userState.currentBlueprint = null;
         }
     }
