@@ -10,6 +10,14 @@
         "React",
         "react-game-engine"
     ],
+    "engines": {
+        "node": "14.x",
+        "npm": "7.x"
+    },
+    "volta": {
+        "node": "14.16.1",
+        "npm": "7.9.0"
+    },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
