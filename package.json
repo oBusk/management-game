@@ -18,6 +18,14 @@
         "node": "14.16.1",
         "npm": "7.9.0"
     },
+    "lint-staged": {
+        "**/*.{ts,tsx,js,jsx}": [
+            "eslint --fix"
+        ],
+        "**/*.{md,yml,yaml,json}": [
+            "prettier --write"
+        ]
+    },
     "simple-git-hooks": {
         "pre-commit": "npx --no-install lint-staged"
     },
