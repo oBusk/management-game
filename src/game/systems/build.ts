@@ -5,9 +5,15 @@ import { Entities } from "../entities";
 import { buildings } from "../entities/buildings";
 import { readButton } from "./mouse-controller";
 
-const id = (seed = 0) => (prefix = "") => `${prefix}${++seed}`;
+const id =
+    (seed = 0) =>
+    (prefix = "") =>
+        `${prefix}${++seed}`;
 
-const buildingId = ((id) => () => id("building"))(id(0));
+const buildingId = (
+    (id) => () =>
+        id("building")
+)(id(0));
 
 const pay = (resources: Resources, price: Resources) => {
     resources.escudos = (resources.escudos ?? 0) - (price.escudos ?? 0);

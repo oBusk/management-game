@@ -39,7 +39,7 @@ export const capitalize = <S extends string>(str: S): Capitalize<S> => {
 
 export const justPressed = <
     C extends MouseControllerEntity | KeyboardControllerEntity,
-    K extends keyof Omit<C, "previous">
+    K extends keyof Omit<C, "previous">,
 >(
     c: C,
     key: K,
