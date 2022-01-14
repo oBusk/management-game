@@ -68,6 +68,9 @@
         "simple-git-hooks": "^2.7.0",
         "typescript": "^4.5.4"
     },
+    "overrides": {
+        "mini-css-extract-plugin": "2.4.5"
+    },
     "browserslist": {
         "production": [
             ">0.2%",
